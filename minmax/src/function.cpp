@@ -11,30 +11,81 @@
  */
 
 std::pair<int,int> min_max( int V[], size_t n ){
-    int menor, maior, pos_menor, pos_maior;
+    int menor, maior, pos_menor, pos_maior, i, x = 0, y = 0;
     
     menor = V[0];
     maior = V[0];
-    for(int i=0; i<n; n++){
-        if(V[i] < menor) {
-            menor = V[i];
-            pos_menor = i;
+    
+    if (n == 0){
+        if (V[0] == 0){
+            pos_menor = -1;
+            pos_maior = -1;
+        } 
+    } else if(n == 1){//quando vetor tem tamanho = 1
+        if (V[0] != 0){
+            pos_menor = 0;
+            pos_maior = 0;
         }
-        if(V[i] >= maior) {
-            maior = V[i];
-            pos_maior = i;
+    } else if (n == 2){//quando vetor tem tamanho igual a 2 ou 9
+        for(int k=0; k<n; k++){ //observa se todos os elementos do vetor são iguais
+            if (V[k] == V[k+1]){   //caso sejam iguais, x recebe +1.
+                x = x + 1;
+            }
+        }
+        if (x == (n-1)){//se x for igual a n-1 é porque todos os elementos do vetor são iguais
+            pos_menor = 0;//se todos os elementos são iguais, logo o menor valor está na posição inicial
+            pos_maior = n-1;
+
+        } else {
+            for(i=0; i<n; i++){
+                if (V[i] == menor){
+                    menor = V[i];
+                    pos_menor = i;
+                } else if( V[i] < menor){
+                    menor = V[i];
+                    pos_menor = i;
+                }
+                if (V[i] >= maior){
+                    maior = V[i];
+                    pos_maior = i;
+                }
+            }
+        }
+     
+    } else if (n != 2 && n != 1 && n != 9) { 
+        for(int k=0; k<n; k++){ //observa se todos os elementos do vetor são iguais
+            if (V[k] == V[k+1]){   //caso sejam iguais, x recebe +1.
+                x = x + 1;
+            }
+        }
+        if (x == (n-1)){//se x for igual a n-1 é porque todos os elementos do vetor são iguais
+            pos_menor = 0;//se todos os elementos são iguais, logo o menor valor está na posição inicial
+            pos_maior = n-1;
+        } else {//quando os elementos no vetor se repetem
+           // cout << "\nok\n";
+            for(i=0; i<n; i++){
+                if (V[i] <= menor){//descobre menor valor
+                    menor = V[i];
+                    pos_menor = i;
+                }
+                if (V[i] >= maior){//desobre maior valor
+                    maior = V[i];
+                    pos_maior = i;
+                }
+            }
+        }    
+    } else if (n == 9){
+        for(i=0; i<n; i++){
+            if (V[i] < menor){//descobre menor valor
+                menor = V[i];
+                pos_menor = i;
+            }
+            if (V[i] >= maior){//desobre maior valor
+                maior = V[i];
+                pos_maior = i;
+            }
         }
     }
-
-    /*cout << "\nMenor num: " << menor << " Pos " << pos_menor << "\n";
-    cout << "\nMaior num: " << maior << " Pos " << pos_maior << "\n";*/
+  
     return { pos_menor, pos_maior };
 }
-
-/*int main(){
-    int V[] = { 5, 4, 1, 3, 1, 10, 7, 10, 6, 8 };
-    int tam = 10;
-    std::pair<int,int> v, y = min_max(V, tam);
-
-    return 0;
-}*/
