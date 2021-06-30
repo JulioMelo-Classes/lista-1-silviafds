@@ -8,6 +8,9 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+/*
+blz
+*/
 int main( void ){
     int m, n, aux, a, resultado[10], x = 0;
 

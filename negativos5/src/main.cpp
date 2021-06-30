@@ -4,9 +4,12 @@ using std::cout;
 
 const int SIZE = 5; // input size.
 
+/*
+faltou inicializar "a" mas ok
+*/
 int main(void){
     
-    int cont = 0, vetor[5], a;
+    int cont = 0, vetor[5], a = 0;
 
     for(cont = 0; cont<SIZE; cont++){
         cin >> vetor[cont];

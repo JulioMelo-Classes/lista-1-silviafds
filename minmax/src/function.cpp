@@ -9,7 +9,13 @@
  *
  * @return A pair of indexes to the first smallest and last largest values.
  */
+/*
+você resolveu os casos de teste mas deviou da resolução do problema
+o tamanho do vetor não é relevante a menos de quando é 0. Depois que o tamanho
+não é 0, o alogoritmo é sempre o mesmo, parecido com o seu da linha 44 - 56
 
+vou considerar 50% já que vc resolveu muito voltado aos casos de teste.
+*/
 std::pair<int,int> min_max( int V[], size_t n ){
     int menor, maior, pos_menor, pos_maior, i, x = 0, y = 0;
     
